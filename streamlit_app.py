@@ -33,15 +33,21 @@ with st.sidebar:
   body_mass_g = st.slider('Body Mass in g', 2700.0, 6300.0, 4207.0)
   gender = st.selectbox('gender', ('male', 'female'))
   
-# create df for input
-data = {
-  'island': island,
-  'bill_length_mm': bill_length_mm,
-  'bill_depth_mm': bill_depth_mm,
-  'flipper_length_mm': flipper_length_mm,
-  'body_mass_g': body_mass_g,
-  'gender': gender,
-} 
+  # create df for input
+  data = {
+    'island': island,
+    'bill_length_mm': bill_length_mm,
+    'bill_depth_mm': bill_depth_mm,
+    'flipper_length_mm': flipper_length_mm,
+    'body_mass_g': body_mass_g,
+    'gender': gender,
+  } 
 
-input_df = pd.DataFrame(data, index=[0])
-input_df
+  input_df = pd.DataFrame(data, index=[0])
+  input_penguins = pd.concat([input_df, x], axis=0)
+
+with st.expander('Input Features'):
+  st.write('**Input Penguins**')
+  input_df
+  st.write('**Combined Penguins Data**')
+  input_penguins
